@@ -89,10 +89,7 @@
             <?php
               if (isset($_POST['submit'])) {
                   // Escape user inputs for security 
-                  $un = pg_escape_string(
-                      $conn,
-                      $_REQUEST['uname']
-                  );
+                  $un = $_SESSION['username'];
                   $m = pg_escape_string(
                       $conn,
                       $_REQUEST['msg']
@@ -113,7 +110,7 @@
               <head>
               <link rel="stylesheet" href="../css/chatbox.css">
               </head>                              
-              <body onload="show_func()" onsubmit="">
+              <body  >
                   <div id="container">
                       <main>
                           <header>
@@ -151,10 +148,11 @@
                                   ?>
                                           <div id="triangle1" class="triangle1"></div>
                                           <div id="message1" class="message1">
-                                              <span style="color:white;float:right;">
-                                                  <?php echo $row['msg']; ?></span> <br />
+                                              <span >
+                                                  <?php echo $row['msg']; ?>
+                                                </span> <br />
                                             
-                                                  <span style="color:black;float:left;font-size:10px;clear:both;">
+                                                  <span >
                                                       <?php echo $row['username']; ?>,
                                                       <?php echo $row['dt']; ?>
                                                   </span>
@@ -166,12 +164,11 @@
                                           ?>
                                               <div id="triangle" class="triangle"></div>
                                               <div id="message" class="message">
-                                                  <span style="color:white;float:left;">
+                                                  <span >
                                                       <?php echo $row['msg']; ?>
                                                   </span> <br />
                                                   <div>
-                                                      <span style="color:black;float:right; 
-                  font-size:10px;clear:both;">
+                                                      <span >
                                                           <?php echo $row['username']; ?>,
                                                           <?php echo $row['dt']; ?>
                                                       </span>
@@ -183,12 +180,11 @@
                                           ?>
                                               <div id="triangle1" class="triangle1"></div>
                                               <div id="message1" class="message1">
-                                                  <span style="color:white;float:right;">
+                                                  <span >
                                                       <?php echo $row['msg']; ?>
                                                   </span> <br />
                                                   <div>
-                                                      <span style="color:black;float:left; 
-                  font-size:10px;clear:both;">
+                                                      <span >
                                                           <?php echo $row['username']; ?>,
                                                           <?php echo $row['dt']; ?>
                                                       </span>
@@ -205,10 +201,7 @@
                                   <table>
                                       <tr>
                                           <th>
-                                              <input class="input1" type="text" id="uname" name="uname" placeholder="From">
-                                          </th>
-                                          <th>
-                                              <textarea id="msg" name="msg" rows='3' cols='50' placeholder="Type your message">
+                                              <textarea id="msg" name="msg" rows='3' cols='100' placeholder="Type your message">
                     </textarea></th>
                                           <th>
                                               <input class="input2" type="submit" id="submit" name="submit" value="send">
