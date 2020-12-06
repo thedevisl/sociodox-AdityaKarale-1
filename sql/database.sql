@@ -86,3 +86,4 @@ CREATE TABLE finalchat(
   msg text NOT NULL,
   dt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+/*uname varchar(20) NOT NULL*/

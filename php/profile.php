@@ -101,7 +101,7 @@
                   //$ts = date('y-m-d h:ia');
 
                   // Attempt insert query execution 
-                  $sql = "INSERT INTO finalchat (uname, msg, dt) 
+                  $sql = "INSERT INTO finalchat (username, msg, dt) 
                   VALUES ('$un', '$m', CURRENT_TIMESTAMP)";
                   if (pg_query($conn, $sql)) {;
                   } else {
@@ -113,7 +113,7 @@
               <head>
               <link rel="stylesheet" href="../css/chatbox.css">
               </head>                              
-              <body onload="show_func()">
+              <body onload="show_func()" onsubmit="">
                   <div id="container">
                       <main>
                           <header>
@@ -131,6 +131,7 @@
 
                                   var element = document.getElementById("chathist");
                                   element.scrollTop = element.scrollHeight;
+
 
                               }
                           </script>
@@ -152,18 +153,16 @@
                                           <div id="message1" class="message1">
                                               <span style="color:white;float:right;">
                                                   <?php echo $row['msg']; ?></span> <br />
-                                              <div>
-                                                  <span style="color:black;float:left; 
-              font-size:10px;clear:both;">
-                                                      <?php echo $row['uname']; ?>,
+                                            
+                                                  <span style="color:black;float:left;font-size:10px;clear:both;">
+                                                      <?php echo $row['username']; ?>,
                                                       <?php echo $row['dt']; ?>
                                                   </span>
-                                              </div>
                                           </div>
                                           <br /><br />
                                           <?php
                                       } else {
-                                          if ($row['uname'] != $first['uname']) {
+                                          if ($row['username'] != $first['username']) {
                                           ?>
                                               <div id="triangle" class="triangle"></div>
                                               <div id="message" class="message">
@@ -173,7 +172,7 @@
                                                   <div>
                                                       <span style="color:black;float:right; 
                   font-size:10px;clear:both;">
-                                                          <?php echo $row['uname']; ?>,
+                                                          <?php echo $row['username']; ?>,
                                                           <?php echo $row['dt']; ?>
                                                       </span>
                                                   </div>
@@ -190,7 +189,7 @@
                                                   <div>
                                                       <span style="color:black;float:left; 
                   font-size:10px;clear:both;">
-                                                          <?php echo $row['uname']; ?>,
+                                                          <?php echo $row['username']; ?>,
                                                           <?php echo $row['dt']; ?>
                                                       </span>
                                                   </div>
